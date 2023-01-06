@@ -1,0 +1,50 @@
+﻿@using AdminLTETemplate.Entities;
+@model Album
+
+<div class="row">
+    <div class="col">
+        <h1 class="display-4">Create Album</h1>
+        <hr />
+    </div>
+</div>
+
+<div class="row">
+    <div class="col p-5">
+        <div class="card card-primary">
+            <div class="card-header">
+                <h3 class="card-title">New Album</h3>
+            </div>
+            <!-- /.card-header -->
+            <!-- form start -->
+            @{
+                string nameErr = (ViewContext.ModelState[nameof(Model.Name)] != null) 
+                    ? ViewContext.ModelState[nameof(Model.Name)].Errors.Any() ? "is-invalid" : "" 
+                    : "";
+                
+                string descErr = (ViewContext.ModelState[nameof(Model.Description)] != null) 
+                    ? ViewContext.ModelState[nameof(Model.Description)].Errors.Any() ? "is-invalid" : "" 
+                    : "";
+            }
+
+            <form method="post">
+                <div class="card-body">
+                    <div class="form-group">
+                        <label asp-for="Name"></label>
+                        <input asp-for="Name" class="form-control @nameErr" placeholder="album name">
+                        <span asp-validation-for="Name" class="text-danger small"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Description"></label>
+                        <input asp-for="Description" class="form-control @descErr" placeholder="lorem ipsum dolor sit a met.">
+                        <span asp-validation-for="Description" class="text-danger small"></span>
+                    </div>
+                </div>
+                <!-- /.card-body -->
+
+                <div class="card-footer">
+                    <button type="submit" class="btn btn-primary">Create</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
