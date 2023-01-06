@@ -18,6 +18,11 @@ namespace AdminLTETemplate.Controllers
             return View();
         }
 
+        public IActionResult table()
+        {
+            return View();
+        }
+
         public IActionResult Privacy()
         {
             return View();
